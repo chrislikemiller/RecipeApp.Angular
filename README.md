@@ -1,6 +1,8 @@
 # Recipe App - Angular Frontend
 
-A modern, dark-themed Angular application for recipe sharing with a beautiful UI built using Angular Material and custom SCSS architecture.
+A modern, pastel-themed Angular application for recipe sharing with a beautiful UI built using Angular Material and custom SCSS architecture.
+
+Readme written by Claude himself initially, as well as all css files, for easing development and focusing on Angular while also making the app look nice.
 
 ## ✨ Features
 
@@ -8,10 +10,6 @@ A modern, dark-themed Angular application for recipe sharing with a beautiful UI
 - **Dark Theme** with consistent design system
 - **Angular Material UI** components with custom styling
 - **Responsive Design** with mobile-first approach
-- **Type-safe** with TypeScript
-- **Reusable Components** for rapid development
-- **Smooth Animations** and micro-interactions
-- **SCSS Architecture** with variables, mixins, and utilities
 
 ## 🚀 Quick Start
 
