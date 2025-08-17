@@ -49,7 +49,7 @@ import { HttpErrorResponse } from "@angular/common/http";
           {{ message }}
         </div>
       }
-      <app-loadingF-button 
+      <app-loading-button 
         type="submit" 
         [disabled]="registerForm.invalid || isLoading"
         [loading]="isLoading">
