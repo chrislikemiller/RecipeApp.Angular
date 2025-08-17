@@ -1,0 +1,108 @@
+// Import variables
+@import "shared/styles/variables";
+
+// Header Styles
+.app-header {
+  width: 100%;
+  background: $surface-light;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: $spacing-sm 0;
+  box-shadow: $box-shadow-sm;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+
+.my-recipes-icon {
+  width: 1rem;
+}
+
+// Header Button Styling
+.header-btn {
+  ::ng-deep .btn {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    .material-icons {
+      font-size: 1.1rem;
+    }
+
+    &:hover {
+      background: rgba(165, 214, 165, 0.1);
+    }
+  }
+}
+
+// Main content area
+.app-main {
+  min-height: calc(100vh - 80px);
+  padding-top: $spacing-md;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding: 0 $spacing-sm;
+  }
+
+  .header-left,
+  .header-right {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .header-center {
+    order: 1;
+    margin: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .header-btn {
+    ::ng-deep .btn {
+      padding: $spacing-xs $spacing-sm;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header-btn {
+    ::ng-deep .btn {
+      .material-icons {
+        margin-right: 0;
+      }
+
+      // Hide text on very small screens, show only icons
+      > span:not(.material-icons) {
+        display: none;
+      }
+    }
+  }
+}

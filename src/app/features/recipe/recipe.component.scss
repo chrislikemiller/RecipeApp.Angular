@@ -1,0 +1,40 @@
+@import "../../shared/styles/variables";
+
+// Minimal custom styles for search input focus state
+.search-input {
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($accent-primary, 0.15);
+  }
+  
+  &::placeholder {
+    color: $text-hint;
+  }
+}
+
+// Favorite button styles
+.favorite-button {
+  transition: color 0.2s ease;
+  
+  &.favorited {
+    color: $accent-primary;
+    
+    .material-icons {
+      color: $accent-primary;
+    }
+  }
+  
+  &:hover {
+    .material-icons {
+      color: $accent-primary;
+    }
+  }
+}
+
+// All other styles moved to utility classes in the template:
+// - mx-lg for horizontal margins  
+// - d-flex, align-center, gap-sm for flexbox layout
+// - w-full, border, border-primary, rounded, p-sm for search container
+// - text-hint for icon color
+// - flex-1, text-primary, text-base, bg-transparent, border-0, p-0 for input
+// - mb-lg, my-lg for spacing
+// - justify-center for pagination alignment

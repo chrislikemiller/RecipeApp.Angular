@@ -1,0 +1,141 @@
+<div class="container animate-fade-in-up">
+  <div class="page-header">
+    <h1 class="d-flex align-center gap-sm">
+      <span class="material-icons">restaurant_menu</span>
+      Add New Recipe
+    </h1>
+    <p class="text-secondary">Share your favorite recipe with the community</p>
+  </div>
+
+  <app-card class="recipe-form-card">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="recipe-form">
+      <section class="form-section">
+        <h3 class="section-title">Basic Information</h3>
+
+        <app-input
+          label="Recipe Title"
+          placeholder="Enter your recipe name"
+          formControlName="title"
+          [required]="true"
+          [error]="getFieldError('title')"
+        >
+        </app-input>
+
+        <app-input
+          label="Description"
+          placeholder="Describe your recipe..."
+          formControlName="description"
+          type="text"
+          [required]="true"
+          [error]="getFieldError('description')"
+        >
+        </app-input>
+
+        <app-input
+          label="Difficulty Level"
+          placeholder="1-5 (1 = Easy, 5 = Expert)"
+          formControlName="difficulty"
+          type="number"
+          [required]="true"
+          [error]="getFieldError('difficulty')"
+        >
+        </app-input>
+      </section>
+
+      <section class="form-section">
+        <div class="d-flex justify-between align-center mb-md">
+          <h3 class="section-title">Ingredients</h3>
+          <app-button
+            type="button"
+            variant="ghost"
+            size="sm"
+            (onClick)="addIngredient()"
+          >
+            <span class="material-icons">add</span>
+            Add Ingredient
+          </app-button>
+        </div>
+
+        <div formArrayName="ingredients" class="ingredients-list">
+          @for (ingredient of ingredientsFormArray.controls; track $index) {
+          <div class="ingredient-item d-flex gap-sm align-center">
+            <app-input
+              [placeholder]="'Ingredient ' + ($index + 1)"
+              [formControlName]="$index"
+              class="flex-1"
+            >
+            </app-input>
+            <app-button
+              type="button"
+              variant="ghost"
+              size="sm"
+              (onClick)="removeIngredient($index)"
+              [disabled]="ingredientsFormArray.length <= 1"
+            >
+              <span class="material-icons">delete</span>
+            </app-button>
+          </div>
+          }
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="d-flex justify-between align-center mb-md">
+          <h3 class="section-title">Instructions</h3>
+          <app-button
+            type="button"
+            variant="ghost"
+            size="sm"
+            (onClick)="addInstruction()"
+          >
+            <span class="material-icons">add</span>
+            Add Step
+          </app-button>
+        </div>
+
+        <div formArrayName="instructions" class="instructions-list">
+          @for (instruction of instructionsFormArray.controls; track $index) {
+          <div class="instruction-item d-flex gap-sm align-start">
+            <div class="step-number">{{ $index + 1 }}</div>
+            <app-input
+              [placeholder]="'Step ' + ($index + 1) + ' instructions...'"
+              [formControlName]="$index"
+              type="text"
+              class="flex-1"
+            >
+            </app-input>
+            <app-button
+              type="button"
+              variant="ghost"
+              size="sm"
+              (onClick)="removeInstruction($index)"
+              [disabled]="instructionsFormArray.length <= 1"
+            >
+              <span class="material-icons">delete</span>
+            </app-button>
+          </div>
+          }
+        </div>
+      </section>
+
+      <div class="form-actions d-flex gap-md justify-end">
+        <app-button
+          type="button"
+          variant="ghost"
+          (onClick)="onCancel()"
+          [disabled]="isSubmitting()"
+        >
+          Cancel
+        </app-button>
+        <app-loading-button
+          type="submit"
+          variant="primary"
+          [loading]="isSubmitting()"
+          [disabled]="recipeForm.invalid"
+        >
+          Create Recipe
+        </app-loading-button>
+      </div>
+    </form>
+  </app-card>
+</div>

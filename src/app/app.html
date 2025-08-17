@@ -1,0 +1,94 @@
+<!-- Modern Header -->
+<header class="app-header">
+  <div class="header-container">
+    <!-- Left Side Navigation -->
+    <div class="header-left">
+      <app-button
+        variant="ghost"
+        size="md"
+        (onClick)="navigateToHome()"
+        class="header-btn"
+      >
+        <span class="material-icons">home</span>
+        Home
+      </app-button>
+
+      @if (this.authService.currentUser$ | async) {
+        <app-button
+        variant="ghost"
+        size="md"
+        (onClick)="navigateToMyRecipes()"
+        class="header-btn"
+      >
+        <span class="material-icons my-recipes-icon">book_ribbon</span>
+        My Recipes
+      </app-button>
+
+      <app-button
+        variant="ghost"
+        size="md"
+        (onClick)="navigateToFavorites()"
+        class="header-btn"
+      >
+        <span class="material-icons">favorite</span>
+        Favorites
+      </app-button>
+      }
+    </div>
+
+    <!-- Center Search Bar -->
+
+    <!-- Right Side Authentication -->
+    <div class="header-right">
+      <!-- Not Logged In -->
+      @if (!(this.authService.currentUser$ | async)) {
+      <app-button
+        variant="ghost"
+        size="md"
+        (onClick)="navigateToLogin()"
+        class="header-btn"
+      >
+        <span class="material-icons">login</span>
+        Login
+      </app-button>
+
+      <app-button
+        variant="ghost"
+        size="md"
+        (onClick)="navigateToRegister()"
+        class="header-btn"
+      >
+        <span class="material-icons">person_add</span>
+        Register
+      </app-button>
+      }
+
+      <!-- Logged In -->
+      @if (this.authService.currentUser$ | async) {
+      <app-button
+        variant="ghost"
+        size="md"
+        (onClick)="navigateToProfile()"
+        class="header-btn"
+      >
+        <span class="material-icons">account_circle</span>
+        Profile
+      </app-button>
+
+      <app-button
+        variant="ghost"
+        size="md"
+        (onClick)="logout()"
+        class="header-btn"
+      >
+        <span class="material-icons">logout</span>
+        Logout
+      </app-button>
+      }
+    </div>
+  </div>
+</header>
+
+<main class="app-main">
+  <router-outlet />
+</main>

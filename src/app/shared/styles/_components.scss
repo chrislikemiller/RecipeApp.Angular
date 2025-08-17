@@ -1,0 +1,591 @@
+// ============================================================================
+// WRITTEN BY AI - COMPONENT STYLES - Reusable UI Components
+// ============================================================================
+
+@use 'sass:color';
+@import 'variables';
+@import 'mixins';
+
+// Button Component Styles
+.btn {
+  @include button-base;
+  
+  // Button Sizes
+  &.btn-sm {
+    @include button-size($button-height-sm, $spacing-md, $font-size-sm);
+  }
+  
+  &.btn-md {
+    @include button-size($button-height-md, $spacing-lg, $font-size-base);
+  }
+  
+  &.btn-lg {
+    @include button-size($button-height-lg, $spacing-xl, $font-size-lg);
+  }
+  
+  // Button Variants
+  &.btn-primary {
+    @include button-primary;
+  }
+  
+  &.btn-secondary {
+    @include button-secondary;
+  }
+  
+  &.btn-ghost {
+    @include button-ghost;
+  }
+  
+  &.btn-success {
+    @include button-base;
+    background: linear-gradient(135deg, $accent-secondary, color.adjust($accent-secondary, $lightness: -10%));
+    color: $text-primary;
+    
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, color.adjust($accent-secondary, $lightness: 5%), $accent-secondary);
+    }
+    
+    &:active:not(:disabled) {
+      background: color.adjust($accent-secondary, $lightness: 15%);
+    }
+  }
+  
+  &.btn-warning {
+    @include button-base;
+    background: linear-gradient(135deg, $accent-warning, color.adjust($accent-warning, $lightness: -10%));
+    color: $text-primary;
+    
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, color.adjust($accent-warning, $lightness: 5%), $accent-warning);
+    }
+    
+    &:active:not(:disabled) {
+      background: color.adjust($accent-warning, $lightness: 15%);
+    }
+  }
+  
+  &.btn-error {
+    @include button-base;
+    background: linear-gradient(135deg, $accent-error, color.adjust($accent-error, $lightness: -10%));
+    color: $text-primary;
+    
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, color.adjust($accent-error, $lightness: 5%), $accent-error);
+    }
+    
+    &:active:not(:disabled) {
+      background: color.adjust($accent-error, $lightness: 15%);
+    }
+  }
+  
+  // Button with icon
+  &.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    
+    .icon {
+      width: 1.25em;
+      height: 1.25em;
+    }
+  }
+  
+  // Loading state
+  &.btn-loading {
+    position: relative;
+    color: transparent;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1rem;
+      height: 1rem;
+      margin: -0.5rem 0 0 -0.5rem;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+  }
+}
+
+// Form Input Styles
+.form-group {
+  margin-bottom: $spacing-lg;
+  
+  .form-label {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-secondary;
+    margin-bottom: $spacing-sm;
+  }
+  
+  .form-input {
+    @include input-base;
+    
+    &.input-sm {
+      @include input-size($input-height-sm, $font-size-sm);
+    }
+    
+    &.input-md {
+      @include input-size($input-height-md, $font-size-base);
+    }
+    
+    &.input-lg {
+      @include input-size($input-height-lg, $font-size-lg);
+    }
+    
+    &.input-error {
+      border-color: $accent-error;
+      
+      &:focus {
+        border-color: $accent-error;
+        box-shadow: 0 0 0 3px rgba($accent-error, 0.1);
+      }
+    }
+    
+    &.input-success {
+      border-color: $accent-secondary;
+      
+      &:focus {
+        border-color: $accent-secondary;
+        box-shadow: 0 0 0 3px rgba($accent-secondary, 0.1);
+      }
+    }
+  }
+  
+  .form-textarea {
+    @include input-base;
+    resize: vertical;
+    min-height: 100px;
+    padding: $spacing-md;
+    line-height: $line-height-normal;
+  }
+  
+  .form-select {
+    @include input-base;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right $spacing-md center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    appearance: none;
+  }
+  
+  .form-error {
+    font-size: $font-size-sm;
+    color: $accent-error;
+    margin-top: $spacing-xs;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+  
+  .form-helper {
+    font-size: $font-size-sm;
+    color: $text-hint;
+    margin-top: $spacing-xs;
+  }
+}
+
+// Card Component Styles
+.card {
+  @include card-base;
+  
+  &.card-interactive {
+    @include card-hover;
+    cursor: pointer;
+  }
+  
+  &.card-elevated {
+    box-shadow: $box-shadow-lg;
+  }
+  
+  .card-header {
+    padding: $spacing-lg;
+    border-bottom: 1px solid $divider-color;
+    
+    .card-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      color: $text-primary;
+      margin: 0;
+    }
+    
+    .card-subtitle {
+      font-size: $font-size-sm;
+      color: $text-secondary;
+      margin: $spacing-xs 0 0 0;
+    }
+  }
+  
+  .card-body {
+    padding: $spacing-lg;
+  }
+  
+  .card-footer {
+    padding: $spacing-lg;
+    border-top: 1px solid $divider-color;
+    background: rgba($surface-variant, 0.2);
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $radius-lg $radius-lg 0 0;
+  }
+}
+
+// Badge Component Styles
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-full;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  
+  &.badge-primary {
+    background: rgba($accent-primary, 0.3);
+    color: color.adjust($accent-primary, $lightness: -20%);
+  }
+  
+  &.badge-secondary {
+    background: rgba($surface-light, 0.8);
+    color: color.adjust($surface-light, $lightness: -30%);
+  }
+  
+  &.badge-success {
+    background: rgba($accent-secondary, 0.2);
+    color: $accent-secondary;
+  }
+  
+  &.badge-warning {
+    background: rgba($accent-warning, 0.2);
+    color: $accent-warning;
+  }
+  
+  &.badge-error {
+    background: rgba($accent-error, 0.2);
+    color: $accent-error;
+  }
+  
+  &.badge-outline {
+    background: transparent;
+    border: 1px solid currentColor;
+  }
+}
+
+// Alert Component Styles
+.alert {
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  border: 1px solid;
+  margin-bottom: $spacing-lg;
+  
+  .alert-title {
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-xs;
+  }
+  
+  .alert-content {
+    color: rgba($text-primary, 0.9);
+  }
+  
+  &.alert-info {
+    background: rgba($accent-primary, 0.1);
+    border-color: rgba($accent-primary, 0.3);
+    color: $accent-primary;
+  }
+  
+  &.alert-success {
+    background: rgba($accent-secondary, 0.1);
+    border-color: rgba($accent-secondary, 0.3);
+    color: $accent-secondary;
+  }
+  
+  &.alert-warning {
+    background: rgba($accent-warning, 0.1);
+    border-color: rgba($accent-warning, 0.3);
+    color: $accent-warning;
+  }
+  
+  &.alert-error {
+    background: rgba($accent-error, 0.1);
+    border-color: rgba($accent-error, 0.3);
+    color: $accent-error;
+  }
+}
+
+// Modal Component Styles
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($accent-dark, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-modal;
+  padding: $spacing-lg;
+}
+
+.modal {
+  background: $primary-light;
+  border-radius: $radius-lg;
+  box-shadow: $box-shadow-xl;
+  max-width: 32rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid $border-color;
+  
+  .modal-header {
+    padding: $spacing-lg;
+    border-bottom: 1px solid $divider-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .modal-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      color: $text-primary;
+      margin: 0;
+    }
+    
+    .modal-close {
+      @include button-ghost;
+      padding: $spacing-xs;
+      border-radius: $radius-sm;
+    }
+  }
+  
+  .modal-body {
+    padding: $spacing-lg;
+  }
+  
+  .modal-footer {
+    padding: $spacing-lg;
+    border-top: 1px solid $divider-color;
+    display: flex;
+    gap: $spacing-md;
+    justify-content: flex-end;
+  }
+}
+
+// Toast Component Styles
+.toast-container {
+  position: fixed;
+  top: $spacing-lg;
+  right: $spacing-lg;
+  z-index: $z-tooltip;
+  max-width: 400px;
+}
+
+.toast {
+  background: $primary-light;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  box-shadow: $box-shadow-lg;
+  padding: $spacing-md;
+  margin-bottom: $spacing-sm;
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  
+  .toast-icon {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.125rem;
+  }
+  
+  .toast-content {
+    flex: 1;
+    
+    .toast-title {
+      font-weight: $font-weight-medium;
+      color: $text-primary;
+      margin-bottom: $spacing-xs;
+    }
+    
+    .toast-message {
+      font-size: $font-size-sm;
+      color: $text-secondary;
+    }
+  }
+  
+  .toast-close {
+    @include button-ghost;
+    padding: $spacing-xs;
+    margin: -$spacing-xs;
+  }
+  
+  &.toast-success {
+    border-left: 4px solid $accent-secondary;
+  }
+  
+  &.toast-warning {
+    border-left: 4px solid $accent-warning;
+  }
+  
+  &.toast-error {
+    border-left: 4px solid $accent-error;
+  }
+  
+  &.toast-info {
+    border-left: 4px solid $accent-primary;
+  }
+}
+
+// Loading Component Styles
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($accent-dark, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-modal;
+}
+
+.loading-content {
+  text-align: center;
+  color: $text-primary;
+  
+  .loading-spinner {
+    margin-bottom: $spacing-md;
+  }
+  
+  .loading-text {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// Dropdown Component Styles
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: $primary-light;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  box-shadow: $box-shadow-lg;
+  padding: $spacing-sm 0;
+  min-width: 200px;
+  z-index: $z-dropdown;
+  
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    color: $text-primary;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color $duration-fast $ease-out;
+    
+    &:hover {
+      background: $hover-overlay;
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    &.dropdown-item-danger {
+      color: $accent-error;
+    }
+  }
+  
+  .dropdown-divider {
+    height: 1px;
+    background: $divider-color;
+    margin: $spacing-sm 0;
+  }
+}
+
+// Pagination Component Styles
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  
+  .pagination-item {
+    @include button-base;
+    @include button-size($button-height-sm, $spacing-sm, $font-size-sm);
+    
+    &.pagination-active {
+      background: $accent-primary;
+      color: $text-primary;
+    }
+    
+    &:not(.pagination-active) {
+      @include button-ghost;
+    }
+  }
+}
+
+// Table Component Styles
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: $primary-light;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid $border-color;
+  
+  th, td {
+    padding: $spacing-md;
+    text-align: left;
+    border-bottom: 1px solid $divider-color;
+  }
+  
+  th {
+    background: $surface-variant;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+  
+  td {
+    color: $text-primary;
+  }
+  
+  tbody tr {
+    transition: background-color $duration-fast $ease-out;
+    
+    &:hover {
+      background: $hover-overlay;
+    }
+  }
+  
+  tbody tr:last-child {
+    td {
+      border-bottom: none;
+    }
+  }
+}

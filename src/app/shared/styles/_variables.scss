@@ -1,0 +1,119 @@
+// ============================================================================
+// WRITTEN BY AI - SCSS VARIABLES - Pastel Theme Recipe App
+// ============================================================================
+
+// Color Palette - Pastel Theme
+$primary-light: #FFF8E7;      // Warm cream (main background)
+$secondary-light: #7ECBAE;    // Sea green (primary accent)
+$surface-light: #fff5d2;     // Soft peach/yellow (secondary surfaces)
+$surface-variant: #c9dcc4;   // Mint green (tertiary elements)
+$background-light: #FFFEF9;  // Very light warm white
+$accent-dark: #2C5F5A;       // Deep teal (text & borders)
+
+// Accent Colors
+$accent-primary: #A5D6A5;     // Light forest green (primary actions)
+$accent-secondary: #5fb371;  // Sea green (secondary actions)
+$accent-tertiary: #A8D8D0;   // Light mint (tertiary elements)
+$accent-warning: #E6A952;    // Warm amber
+$accent-error: #D85A5A;      // Soft red
+
+// Text Colors
+$text-primary: #2C5F5A;      // Deep teal for main text
+$text-secondary: #4A7A73;    // Medium teal for secondary text
+$text-disabled: #8FB5B0;    // Light teal for disabled
+$text-hint: #6B9691;        // Medium teal for hints
+
+// Border & Divider Colors
+$border-color: #D6E8E3;     // Light sea green border
+$divider-color: #E4F0ED;    // Very light sea green divider
+$hover-overlay: rgba(107, 182, 160, 0.12);  // Turquoise overlay
+$focus-overlay: rgba(107, 182, 160, 0.25);  // Stronger turquoise overlay
+
+// Shadows
+$shadow-color: rgba(81, 97, 96, 0.15);
+$box-shadow-sm: 0 2px 4px $shadow-color;
+$box-shadow-md: 0 4px 12px $shadow-color;
+$box-shadow-lg: 0 8px 24px $shadow-color;
+$box-shadow-xl: 0 16px 48px $shadow-color;
+
+// Spacing Scale
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 1rem;      // 16px
+$spacing-lg: 1.5rem;    // 24px
+$spacing-xl: 2rem;      // 32px
+$spacing-2xl: 3rem;     // 48px
+$spacing-3xl: 4rem;     // 64px
+
+// Border Radius
+$radius-sm: 0.25rem;    // 4px
+$radius-md: 0.5rem;     // 8px
+$radius-lg: 0.75rem;    // 12px
+$radius-xl: 1rem;       // 16px
+$radius-2xl: 1.5rem;    // 24px
+$radius-full: 9999px;
+
+// Typography
+$font-family-primary: 'Inter', 'Segoe UI', system-ui, sans-serif;
+$font-family-mono: 'Fira Code', 'Consolas', monospace;
+
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 1.875rem;  // 30px
+$font-size-4xl: 2.25rem;   // 36px
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Z-Index Scale
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// Animation Duration & Easing
+$duration-fast: 0.15s;
+$duration-normal: 0.25s;
+$duration-slow: 0.35s;
+$duration-slower: 0.5s;
+
+$ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Component Specific Variables
+$button-height-sm: 2rem;      // 32px
+$button-height-md: 2.5rem;    // 40px
+$button-height-lg: 3rem;      // 48px
+
+$input-height-sm: 2rem;       // 32px
+$input-height-md: 2.5rem;     // 40px
+$input-height-lg: 3rem;       // 48px
+
+$card-padding: $spacing-lg;
+$card-border-radius: $radius-lg;
+
+$navbar-height: 4rem;         // 64px
+$sidebar-width: 16rem;        // 256px
